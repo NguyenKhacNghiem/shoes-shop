@@ -1,0 +1,25 @@
+<div class="container pt-3 pb-5">
+    <table class="table table-borderless align-middle text-center">
+        <thead style="background-color: rgb(216, 227, 244);">
+            <tr>
+                <th>Mã Đơn Hàng</th>
+                <th>Khách Hàng</th>
+                <th>Tổng Tiền</th>
+                <th>Ngày</th>
+                <th>Trạng Thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{username}}</td>
+                    <td>{{formatPrice total_price}}</td>
+                    <td>{{date}}</td>
+                    <td><span class="badge badge-{{colorOrderStatus status}} rounded-pill d-inline" style="cursor: pointer;" onclick="updateOrderStatus('{{id}}', '{{status}}')">{{status}}</span></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="/js/manage-order.js"></script>

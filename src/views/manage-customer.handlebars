@@ -1,0 +1,22 @@
+<div class="container pt-3 pb-5">
+    <table class="table table-borderless align-middle text-center">
+        <thead style="background-color: rgb(216, 227, 244);">
+            <tr>
+                <th>Tài Khoản</th>
+                <th>Họ Tên</th>
+                <th>Số Điện Thoại</th>
+                <th>Địa Chỉ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each customers}}
+                <tr>
+                    <td>{{username}}</td>
+                    <td>{{fullname}}</td>
+                    <td><span class="badge badge-primary rounded-pill d-inline">{{phone}}</span></td>
+                    <td>{{address}}</td> 
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,40 @@
+<div class="container py-5">
+    <div class="m-auto w-50 border rounded px-5 py-4 shadow">
+        <h2 class="text-primary">Đăng ký tài khoản</h2>
+        <div class="form-outline mb-2">
+            <input name="fullname" type="text" id="fullname" class="form-control" />
+            <label class="form-label" for="fullname">Họ và tên</label>
+        </div>
+
+        <div class="form-outline mb-2">
+            <input name="phone" type="text" id="phone" class="form-control" />
+            <label class="form-label" for="phone">Số điện thoại</label>
+        </div>
+
+        <div class="form-outline mb-2">
+            <input name="username" type="text" id="username" class="form-control" />
+            <label class="form-label" for="username">Tài khoản</label>
+        </div>
+
+        <div class="form-outline mb-2">
+            <input name="password" type="password" id="password" class="form-control" />
+            <label class="form-label" for="password">Mật khẩu</label>
+        </div>
+
+        <div class="form-outline mb-2">
+            <input name="confirm-password" type="password" id="confirm-password" class="form-control" />
+            <label class="form-label" for="confirm-password">Xác nhận mật khẩu</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" id="show-password" />
+            <label class="form-check-label" for="show-password">Hiện mật khẩu</label>
+        </div>
+
+        <button class="btn btn-primary btn-block mb-2" onclick="register()">Đăng ký</button>
+        <span>Đã có tài khoản? <a href="/account/login">Đăng nhập</a></span>
+    </div>
+</div>
+
+<script src="/js/register.js"></script>
+<script src="/js/main.js"></script>

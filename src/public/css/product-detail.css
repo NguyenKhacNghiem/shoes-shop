@@ -1,0 +1,15 @@
+.product-info {
+    padding: 0px 30px;
+    padding-top: 20px;
+}
+
+.text-secondary, td {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.table th {
+    text-align: center;
+    vertical-align: middle;
+    width: 15%;
+}

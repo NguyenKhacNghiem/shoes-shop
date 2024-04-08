@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/products.css">
+<div class="container pt-3">
+    <div class="row">
+        {{#each products}}
+            <div class="col-lg-3 col-md-4 col-12 item" onclick="showProductDetail('{{id}}')">
+                <img src="/uploads/{{image}}">
+                <p>{{name}}</p>
+                <p class="text-info">Danh mục: {{catalog}}</p>
+                <p class="text-danger">{{formatPrice price}}</p>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<script src="/js/products.js"></script>

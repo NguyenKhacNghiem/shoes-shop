@@ -1,0 +1,25 @@
+.table td {
+    vertical-align: middle;
+}
+
+td > img {
+    width: 100%;
+    height: 100%;
+}
+
+.fa-circle-xmark {
+	cursor: pointer;
+}
+
+.fixed-bottom {
+    background-color: rgb(216, 227, 244);
+}
+
+td img:hover {
+    scale: 1.5;
+    transition: 0.5s;
+}
+
+footer {
+    display: none;
+}

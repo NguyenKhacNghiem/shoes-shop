@@ -1,0 +1,57 @@
+<div class="container pt-3">
+    <h2 class="text-primary">Thêm sản phẩm mới</h2>
+
+    <div class="form-outline mb-2">
+        <input name="name" type="text" id="name" class="form-control" />
+        <label class="form-label" for="name">Tên sản phẩm</label>
+    </div>
+
+    <div class="form-outline mb-2">
+        <input name="color" type="text" id="color" class="form-control" />
+        <label class="form-label" for="color">Màu sắc</label>
+    </div>
+
+    <div class="form-outline mb-2">
+        <textarea class="form-control" id="description" rows="4"></textarea>
+        <label class="form-label" for="description">Mô tả</label>
+    </div>
+
+    <div class="form-outline mb-2">
+        <input type="number" id="price" class="form-control" min="1"/>
+        <label class="form-label" for="price">Giá tiền</label>
+    </div>
+
+    <div class="custom-file mb-2">
+        <input type="file" class="custom-file-input" id="image" accept="image/*">
+        <label class="custom-file-label" for="image">Upload ảnh</label>
+    </div>
+
+    <select class="mb-2 custom-select" name="brand" id="brand">
+        <option value="" selected>Thương hiệu</option>
+        <option value="MWC">MWC</option>
+        <option value="Yame">Yame</option>
+        <option value="Biti's">Biti's</option>
+        <option value="ANTA">ANTA</option>
+    </select>
+
+    <select class="mb-2 custom-select" name="catalog" id="catalog">
+        <option value="" selected>Danh mục</option>
+        <option value="Giày thể thao">Giày thể thao</option>
+        <option value="Giày tây">Giày tây</option>
+        <option value="Giày sandals">Giày sandals</option>
+        <option value="Giày lười">Giày lười</option>
+        <option value="Giày boot">Giày boot</option>
+        <option value="Dép">Dép</option>
+    </select>
+    
+    <div class="form-outline mb-2">
+        <input type="number" id="quantity" class="form-control" min="0"/>
+        <label class="form-label" for="quantity">Số lượng</label>
+    </div>
+
+    <button onclick="add()" class="btn btn-primary">Thêm</button>
+    <button onclick="reset()" class="btn btn-secondary">Xóa</button>
+</div>
+
+<script src="/js/main.js"></script>
+<script src="/js/add-product.js"></script>

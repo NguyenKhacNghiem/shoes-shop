@@ -1,0 +1,163 @@
+<link rel="stylesheet" href="/css/admin.css">
+<div class="container-fluid pt-3">
+    <table class="table table-borderless align-middle table-hover text-center">
+        <thead style="background-color: rgb(216, 227, 244);">
+            <tr id="ths">
+                <th style="width: 1%;">Mã Sản Phẩm</th>
+                <th style="width: 10%;">Tên Sản Phẩm</th>
+                <th style="width: 10%;">Màu Sắc</th>
+                <th style="width: 20%;">Mô Tả</th>
+                <th style="width: 10%;">Giá Tiền</th>
+                <th style="width: 10%;">Hình Ảnh</th>
+                <th style="width: 10%;">Thương Hiệu</th>
+                <th style="width: 11%;">Danh Mục</th>
+                <th style="width: 8%;">Số Lượng</th>
+                <th style="width: 10%;">Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{color}}</td>
+                    <td>{{description}}</td>
+                    <td>{{formatPrice price}}</td>
+                    <td><img src="/uploads/{{image}}" data-image="{{image}}"></td>
+                    <td>{{brand}}</td>
+                    <td>{{catalog}}</td>
+                    <td>{{quantity}}</td>
+                    <td>
+                        <button onclick="showAddQuantityModal({{id}}, {{quantity}})" class="btn btn-link p-1 btn-sm btn-rounded text-success"><i class="fa-solid fa-plus"></i></i></button>
+                        <button onclick="showUpdateModal(this)" class="btn btn-link p-1 btn-sm btn-rounded text-warning"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="showDeleteModal({{id}})" class="btn btn-link p-1 btn-sm btn-rounded text-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>   
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Cập nhật sản phẩm --}}
+<div class="modal fade" id="updateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Cập nhật sản phẩm</h4>
+        <button type="button" class="close" onclick="closeUpdateModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-update">
+            <input type="hidden" name="id" id="id">
+
+            <div class="form-outline mb-2">
+                <input name="name" type="text" id="name" class="form-control" />
+                <label class="form-label" for="name">Tên sản phẩm</label>
+            </div>
+
+            <div class="form-outline mb-2">
+                <input name="color" type="text" id="color" class="form-control" />
+                <label class="form-label" for="color">Màu sắc</label>
+            </div>
+
+            <div class="form-outline mb-2">
+                <textarea class="form-control" id="description" rows="4"></textarea>
+                <label class="form-label" for="description">Mô tả</label>
+            </div>
+
+            <div class="form-outline mb-2">
+                <input type="number" id="price" class="form-control" min="1"/>
+                <label class="form-label" for="price">Giá tiền</label>
+            </div>
+
+            <div class="custom-file mb-2">
+                <input type="file" class="custom-file-input" id="image" accept="image/*">
+                <label class="custom-file-label" for="image">Upload ảnh</label>
+            </div>
+
+            <select class="mb-2 custom-select" name="brand" id="brand">
+                <option value="" selected disabled>Thương hiệu</option>
+                <option value="MWC">MWC</option>
+                <option value="Yame">Yame</option>
+                <option value="Biti's">Biti's</option>
+                <option value="ANTA">ANTA</option>
+            </select>
+
+            <select class="mb-2 custom-select" name="catalog" id="catalog">
+              <option value="" selected disabled>Danh mục</option>
+              <option value="Giày thể thao">Giày thể thao</option>
+              <option value="Giày tây">Giày tây</option>
+              <option value="Giày sandals">Giày sandals</option>
+              <option value="Giày lười">Giày lười</option>
+              <option value="Giày boot">Giày boot</option>
+              <option value="Dép">Dép</option>
+            </select>
+
+            <div class="form-outline mb-2">
+                <input type="number" id="quantity" class="form-control" min="0"/>
+                <label class="form-label" for="quantity">Số lượng</label>
+            </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="handleUpdate()">Cập nhật</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeUpdateModal()">Đóng</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{!-- Xóa sản phẩm --}}
+<div class="modal fade" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Xóa sản phẩm</h4>
+        <button type="button" class="close" onclick="closeDeleteModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-delete">
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="handleDelete()">Xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeDeleteModal()">Đóng</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{!-- Thêm số lượng sản phẩm --}}
+<div class="modal fade" id="addQuantityModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm số lượng sản phẩm</h4>
+        <button type="button" class="close" onclick="closeAddQuantityModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-add-quantity">
+        <p id="current-quantity"></p>
+
+        <div class="form-outline mb-2">
+          <input type="number" id="add-quantity" class="form-control" min="1"/>
+          <label class="form-label" for="add-quantity">Thêm</label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="handleAddQuantity()">Thêm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeAddQuantityModal()">Đóng</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin.js"></script>
